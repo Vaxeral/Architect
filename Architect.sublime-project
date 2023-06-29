@@ -1,8 +1,16 @@
 {
-	"folders":
-	[
-		{
-			"path": "."
-		}
-	]
+    "folders":
+    [
+        {
+            "path": "."
+        }
+    ],
+    "build_systems":
+    [
+        {
+            "name": "Debug",
+            "shell_cmd": "mkdir -p build/debug && gcc src/*.c -o build/debug/architect -lglfw -Iinclude",
+            "working_dir": "$project_path"
+        }
+    ]
 }
