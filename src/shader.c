@@ -63,3 +63,7 @@ void shaderSetFloat(Shader *shader, GLchar *uniform, GLfloat value)
 {
     glUniform1f(glGetUniformLocation(shader->id, uniform), value);
 }
+void shaderSet4Float(Shader *shader, GLchar *uniform, GLfloat a, GLfloat b, GLfloat c, GLfloat d)
+{
+    glUniform4f(glGetUniformLocation(shader->id, uniform), a, b, c, d);
+}

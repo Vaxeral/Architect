@@ -76,6 +76,7 @@ int main(int argc, char *argv[])
         glClearColor(1.0, 0.3, 0.3, 1.0);
         glClear(GL_COLOR_BUFFER_BIT);
         shaderUse(&shader);
+        shaderSet4Float(&shader, "ourColor", 0.0, greenValue, 0.0, 1.0);
         glBindVertexArray(vertexArrayObject);
         glDrawArrays(GL_TRIANGLES, 0, 3);
         glfwSwapBuffers(window);
