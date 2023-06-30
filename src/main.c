@@ -91,6 +91,8 @@ int main(int argc, char *argv[])
     glfwSetFramebufferSizeCallback(window, myGlfwFramebufferSizeCallback);
     glfwSwapInterval(0);
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
     shader = shaderCreate(vertexShaderSource, vertexShaderSourceLength, fragmentShaderSource, fragmentShaderSourceLength);
     glGenVertexArrays(1, &vertexArrayObject);
     glBindVertexArray(vertexArrayObject);
@@ -111,9 +113,9 @@ int main(int argc, char *argv[])
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     stbi_set_flip_vertically_on_load(1);
-    data = stbi_load("assets/wall.jpg", &width, &height, &nrChannels, 0);
+    data = stbi_load("assets/awesomeface.png", &width, &height, &nrChannels, 0);
     assert(data);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
     stbi_image_free(data);
     shaderUse(&shader);
     shaderSetInt(&shader, "texture1", 0);
