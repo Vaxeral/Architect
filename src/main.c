@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 #include "shader.h"
 
 GLchar vertexShaderSource[] = {
@@ -41,15 +43,20 @@ void myGlfwErrorCallback(int error, const char *description);
 int main(int argc, char *argv[])
 {
     GLFWwindow *window;
-    float vertices[] = { -0.5, -0.5, 0.0, 0.5, -0.5, 0.0, 0.0, 0.5, 0.0 };
+    GLfloat vertices[] = { -0.5, -0.5, 0.0, 0.5, -0.5, 0.0, 0.0, 0.5, 0.0 };
     GLuint vertexBufferObject;
     Shader shader;
     GLuint vertexArrayObject;
-    int success;
-    char infoLog[512];
+    GLint success;
+    GLchar infoLog[512];
     GLchar *p;
     GLint vertexColorLocation;
+    int width;
+    int height;
+    int nrChannels;
+    unsigned char *data;
 
+    data = stbi_load("../../assets/wall.jpg", &width, &height, &nrChannels, 0);
     glfwSetErrorCallback(myGlfwErrorCallback);
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
