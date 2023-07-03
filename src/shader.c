@@ -7,7 +7,7 @@ Shader shaderCreate(GLchar *vertexShaderSource, GLint vertexShaderSourceLength, 
     GLuint fragmentShader;
     GLuint shaderProgram;
     GLint success;
-    GLchar *infoLog;
+    GLchar infoLog[1024];
 
     vertexShader = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vertexShader, 1, &vertexShaderSource, &vertexShaderSourceLength);
