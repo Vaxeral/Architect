@@ -51,19 +51,27 @@ void shaderUse(Shader *shader)
 {
     glUseProgram(shader->id);
 }
-void shaderSetBool(Shader *shader, GLchar *uniform, GLboolean value)
-{
-    glUniform1i(glGetUniformLocation(shader->id, uniform), value);
-}
-void shaderSetInt(Shader *shader, GLchar *uniform, GLint value)
-{
-    glUniform1i(glGetUniformLocation(shader->id, uniform), value);
-}
 void shaderSetFloat(Shader *shader, GLchar *uniform, GLfloat value)
 {
     glUniform1f(glGetUniformLocation(shader->id, uniform), value);
 }
-void shaderSet4Float(Shader *shader, GLchar *uniform, GLfloat a, GLfloat b, GLfloat c, GLfloat d)
+void shaderSetInteger(Shader *shader, GLchar *uniform, GLint value)
 {
-    glUniform4f(glGetUniformLocation(shader->id, uniform), a, b, c, d);
+    glUniform1i(glGetUniformLocation(shader->id, uniform), value);
+}
+void shaderSetVector2f(Shader *shader, GLchar *uniform, GLfloat *vector)
+{
+    glUniform2fv(glGetUniformLocation(shader->id, uniform), 1, vector);
+}
+void shaderSetVector3f(Shader *shader, GLchar *uniform, GLfloat *vector)
+{
+    glUniform3fv(glGetUniformLocation(shader->id, uniform), 1, vector);
+}
+void shaderSetVector4f(Shader *shader, GLchar *uniform, GLfloat *vector)
+{
+    glUniform4fv(glGetUniformLocation(shader->id, uniform), 1, vector);
+}
+void shaderSetMatrix4(Shader *shader, GLchar *uniform, GLfloat *matrix)
+{
+    glUniformMatrix4fv(glGetUniformLocation(shader->id, uniform), 1, 0, matrix);
 }

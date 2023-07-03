@@ -1,5 +1,5 @@
-#ifndef ARCHITECT_SHADER_H
-#define ARCHITECT_SHADER_H
+#ifndef SHADER_H
+#define SHADER_H
 
 #include <glad/glad.h>
 #include <string.h>
@@ -14,9 +14,11 @@ Shader;
 
 Shader shaderCreate(GLchar *vertexShaderSource, GLint vertexShaderSourceLength, GLchar *fragmentShaderSource, GLint fragmentShaderSourceLength);
 void shaderUse(Shader *shader);
-void shaderSetBool(Shader *shader, GLchar *uniform, GLboolean value);
-void shaderSetInt(Shader *shader, GLchar *uniform, GLint value);
 void shaderSetFloat(Shader *shader, GLchar *uniform, GLfloat value);
-void shaderSet4Float(Shader *shader, GLchar *uniform, GLfloat a, GLfloat b, GLfloat c, GLfloat d);
+void shaderSetInteger(Shader *shader, GLchar *uniform, GLint value);
+void shaderSetVector2f(Shader *shader, GLchar *uniform, GLfloat *vector);
+void shaderSetVector3f(Shader *shader, GLchar *uniform, GLfloat *vector);
+void shaderSetVector4f(Shader *shader, GLchar *uniform, GLfloat *vector);
+void shaderSetMatrix4(Shader *shader, GLchar *uniform, GLfloat *matrix);
 
 #endif
